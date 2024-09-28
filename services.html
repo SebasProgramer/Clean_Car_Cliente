@@ -28,20 +28,44 @@
             min-height: 100vh;
         }
 
+        /* Navbar negro transparente con ancho reducido */
         header {
-            background-color: #007bff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            justify-content: center; /* Centrar el contenido */
+            padding: 1rem 2rem; /* Ajuste del padding */
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7); /* Negro transparente */
             color: #fff;
-            padding: 20px 0;
-            text-align: center;
+        }
+
+        /* Contenedor del título y el navbar */
+        .navbar-container {
+            max-width: 1200px; /* Ancho máximo del navbar */
+            width: 100%; /* Para que ocupe el 100% hasta el max-width */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         h1 {
+            margin: 0;
+            font-size: 2.5rem; /* Asegúrate de que sea el mismo tamaño que en el index */
             color: #fff;
-            margin-top: 0;
+        }
+
+        /* Estilo para "Nuestros" en naranja y "Servicios" en blanco */
+        h1 .orange-text {
+            color: #ff5722;
         }
 
         nav {
-            margin-top: 15px;
+            display: flex;
+            gap: 20px;
         }
 
         nav ul {
@@ -55,18 +79,31 @@
             display: inline;
         }
 
+        /* Botones del navbar: fondo transparente por defecto */
         nav ul li a {
             text-decoration: none;
-            color: white;
-            font-weight: bold;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            color: #fff;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            background-color: transparent; /* Fondo transparente por defecto */
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 5px;
+            box-shadow: none;
         }
 
-        nav ul li a:hover {
-            background-color: white;
-            color: #007bff;
-            border-radius: 5px;
+        /* Cambiar a naranja al hacer hover o clic */
+        nav ul li a:hover,
+        nav ul li a:focus,
+        nav ul li a:active {
+            background-color: #ff5722; /* Fondo naranja cuando se hace hover o clic */
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4); /* Sombra naranja */
+            color: #fff; /* Mantener el texto blanco */
+        }
+
+        /* Espacio debajo del navbar para el contenido */
+        .content {
+            padding-top: 100px; /* Añadir espacio debajo del navbar fijo */
+            flex-grow: 1; /* Para que el contenido ocupe el espacio disponible */
         }
 
         .parent {
@@ -76,7 +113,6 @@
             gap: 20px;
             padding: 20px;
             justify-content: center;
-            flex-grow: 1;
         }
 
         .service-card {
@@ -126,6 +162,7 @@
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            margin-top: auto; /* Para empujar el footer al final */
         }
 
         footer p {
@@ -184,28 +221,33 @@
 <body>
 
     <header>
-        <h1>Nuestros Servicios</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="reservas.html">Reservar</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="navbar-container">
+            <h1><span class="orange-text">Nuestros</span> <span>Servicios</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="reservas.html">Reservar</a></li>
+                    <li><a href="ubicacion.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="parent">
-        <div class="service-card" onclick="showModal('Lavado', 'Limpieza exterior del vehículo', 'Precio: $10')">
-            <img src="lavado.jpg" alt="Lavado">
-            <div class="overlay-text">Lavado</div>
-        </div>
-        <div class="service-card" onclick="showModal('Lavado y Aspirado', 'Limpieza exterior e interior del vehículo', 'Precio: $15')">
-            <img src="lavado_aspirado.jpg" alt="Lavado y Aspirado">
-            <div class="overlay-text">Lavado y Aspirado</div>
-        </div>
-        <div class="service-card" onclick="showModal('Aspirado', 'Aspirado completo del interior del vehículo', 'Precio: $8')">
-            <img src="aspirado.jpg" alt="Aspirado">
-            <div class="overlay-text">Solo Aspirado</div>
+    <!-- Contenido debajo del navbar -->
+    <div class="content">
+        <div class="parent">
+            <div class="service-card" onclick="showModal('Lavado', 'Limpieza exterior del vehículo', 'Precio: $10')">
+                <img src="lavado.jpg" alt="Lavado">
+                <div class="overlay-text">Lavado</div>
+            </div>
+            <div class="service-card" onclick="showModal('Lavado y Aspirado', 'Limpieza exterior e interior del vehículo', 'Precio: $15')">
+                <img src="lavado_aspirado.jpg" alt="Lavado y Aspirado">
+                <div class="overlay-text">Lavado y Aspirado</div>
+            </div>
+            <div class="service-card" onclick="showModal('Aspirado', 'Aspirado completo del interior del vehículo', 'Precio: $8')">
+                <img src="aspirado.jpg" alt="Aspirado">
+                <div class="overlay-text">Solo Aspirado</div>
+            </div>
         </div>
     </div>
 
