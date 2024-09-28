@@ -9,15 +9,25 @@
     <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Asegúrate de que las fuentes coincidan con las de index.html -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Estilos CSS -->
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body, html {
             height: 100%;
-            margin: 0;
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden; /* Evita el scroll horizontal */
+            background-color: #f4f4f4;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Navbar flotante sobre el fondo */
@@ -26,9 +36,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 10;
             display: flex;
-            flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
             justify-content: space-between;
             padding: 1.5rem 2rem;
             align-items: center;
@@ -42,7 +51,6 @@
             font-weight: 600;
             margin: 0;
             color: #fff;
-            flex: 1 1 auto; /* Permite que el título ocupe espacio disponible */
         }
 
         /* Estilos personalizados para las palabras "Clean" y "Car" */
@@ -57,10 +65,7 @@
         /* Navbar alineado a la derecha */
         nav {
             display: flex;
-            flex-wrap: wrap; /* Permite que los enlaces se ajusten en varias líneas si es necesario */
             gap: 20px;
-            flex: 1 1 auto; /* Permite que el nav ocupe espacio disponible */
-            justify-content: flex-end;
         }
 
         /* Botones del navbar */
@@ -89,36 +94,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100% - 100px); /* Altura total menos el navbar */
+            flex-grow: 1; /* Para que el contenido ocupe el espacio disponible */
         }
 
         /* Contenedor del mapa */
         #map {
             height: 100%;
             width: 100%;
-            max-width: 800px; /* Ancho máximo del mapa */
-            max-height: 600px; /* Altura máxima del mapa */
-            border: 2px solid #eb783f;
-            box-sizing: border-box; /* Incluye el padding y border en el tamaño total */
         }
 
-        /* Responsividad */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-            nav {
-                justify-content: flex-start;
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            #map {
-                max-width: 95vw;
-                max-height: 50vh;
-            }
+        footer p {
+            font-size: 0.9rem;
+            margin: 0;
         }
     </style>
 </head>
@@ -131,7 +126,6 @@
             <a href="index.html">Inicio</a>
             <a href="services.html">Servicios</a>
             <a href="reservas.html">Reservas</a>
-            
         </nav>
     </header>
 
@@ -140,6 +134,11 @@
         <!-- Contenedor del Mapa -->
         <div id="map"></div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Clean Car. Todos los derechos reservados.</p>
+    </footer>
 
     <!-- Script para cargar el mapa -->
     <script>
