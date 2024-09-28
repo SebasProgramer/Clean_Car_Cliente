@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ubicación de Clean Car - Lavadero de Autos">
+    <title>Ubicación - Clean Car</title>
+    
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <!-- Estilos CSS -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header */
+        header {
+            background-color: #eb783f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem; /* Tamaño de fuente adaptable */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Asegura que el header esté sobre el mapa */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para mayor claridad */
+        }
+
+        /* Botón de volver */
+        header a {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Estilo del icono de flecha */
+        header a img {
+            height: 30px;
+            width: 30px;
+            margin-right: 8px;
+        }
+
+        /* Contenedor del mapa */
+        #map {
+            height: 60vh; /* Ajusta la altura del mapa en vista móvil */
+            width: 50vw; /* Ajusta el ancho del mapa en vista móvil */
+            border: 2px solid #eb783f; /* Añade un borde para resaltar el mapa */
+            margin: 80px auto 0; /* Espacio superior para el header y centrado */
+        }
+
+        /* Asegura que el contenido esté debajo del header */
+        .content {
+            padding-top: 80px; /* Más espacio para el header fijo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Asegura que el contenedor ocupe toda la altura */
+        }
+
+        /* Responsividad del encabezado y el mapa */
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.2rem; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+            }
+            #map {
+                height: 50vh; /* Menor altura en pantallas pequeñas */
+                width: 95vw; /* Mayor ancho en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html">
+            <img src="flecha.png" alt="Volver">
+            Volver
+        </a>
+        Ubicación
+    </header>
+
+    <!-- Contenedor del Mapa -->
+    <div class="content">
+        <div id="map"></div>
+    </div>
+
+    <!-- Script para cargar el mapa -->
+    <script>
+      function initMap() {
+        // La ubicación en las coordenadas -17.742114, -63.158785
+        const location = { lat: -17.742114, lng: -63.158785 };
+        
+        // Creación del mapa centrado en la ubicación
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: location,
+        });
+        
+        // Creación de un marcador rojo en la ubicación
+        const marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+          }
+        });
+      }
+    </script>
+
+    <!-- API de Google Maps -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Qu981XT7unRjMZmA88OqwyMKQlGJsA8&callback=initMap">
+    </script>
+
+</body>
+</html>
